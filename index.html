@@ -1,5 +1,38 @@
 <html>
   <head>
+    <style>
+      #code {
+        width: 60%;
+        height: 200px;
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+      }
+      #language {
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+      }
+      #output {
+        width: 60%;
+        height: 200px;
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+        overflow: auto;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+        background-color: lightgray;
+        cursor: pointer;
+      }
+    </style>
     <script>
       function compileCode() {
         var code = document.getElementById("code").value;
@@ -26,7 +59,7 @@
     </script>
   </head>
   <body>
-    <textarea id="code" rows="10" cols="50"></textarea>
+    <textarea id="code"></textarea>
     <br />
     <select id="language">
       <option value="python">Python</option>
@@ -37,8 +70,6 @@
     <br />
     <button onclick="compileCode()">Compile Code</button>
     <br />
-    <div id="output" style="border: 1px solid black; padding: 10px;">
-      Output will be displayed here
-    </div>
+    <div id="output">Output will be displayed here</div>
   </body>
 </html>
