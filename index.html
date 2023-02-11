@@ -24,6 +24,16 @@
         border: 1px solid gray;
         overflow: auto;
       }
+      #error {
+        width: 60%;
+        height: 200px;
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+        overflow: auto;
+        color: red;
+      }
       button {
         font-size: 18px;
         padding: 10px;
@@ -43,13 +53,18 @@
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
             var result = JSON.parse(xhr.responseText);
-            document.getElementById("output").innerHTML = result.output;
+            if (result.output) {
+              document.getElementById("output").innerHTML = result.output;
+            }
+            if (result.compile_output) {
+              document.getElementById("error").innerHTML = result.compile_output;
+            }
           }
         };
         xhr.send(
           JSON.stringify({
-            clientId: "bbed22bfabbbd7c0bc14f76c1a5e1c1e",
-            clientSecret: "944338ef4db14b95c30a078c823005dcc6cba1a2a4977eee061bc07f41b5c9c1",
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
             script: code,
             language: language,
             versionIndex: "0",
@@ -71,5 +86,9 @@
     <button onclick="compileCode()">Compile Code</button>
     <br />
     <div id="output">Output will be displayed here</div>
+    <br />
+    <div id="error">Errors will be displayed here</div
+</div>
+
   </body>
 </html>
